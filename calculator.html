@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #E6F9F4;
+        }
+        .calculator {
+            background: #FFFFFF;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 300px;
+            border: 2px solid #00BFA5;
+        }
+        .calculator h1 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #007B5F;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #007B5F;
+        }
+        .form-group input {
+            width: 90%; /* Adjusted width for proportional alignment */
+            padding: 8px;
+            border: 1px solid #00BFA5;
+            border-radius: 4px;
+        }
+        .btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #00BFA5;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #007B5F;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #F0FFFB;
+            border-radius: 4px;
+            text-align: center;
+            border: 1px solid #00BFA5;
+            color: #007B5F;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <h1>ReVale Calculadora de ahorro</h1>
+        <form id="calculatorForm">
+            <div class="form-group">
+                <label for="principal">Salario Actual:</label>
+                <input type="number" id="principal" placeholder="Ingrese el salario actual" required>
+            </div>
+            <div class="form-group">
+                <label for="rate">Incremento:</label>
+                <input type="number" id="rate" placeholder="Ingrese el monto a incrementar" required>
+            </div>
+            <div class="form-group">
+                <label for="time">Time (years):</label>
+                <input type="number" id="time" placeholder="Enter time period" required>
+            </div>
+            <button type="button" class="btn" onclick="calculateResult()">Calculate</button>
+        </form>
+        <div class="result" id="result">
+            Ingerse los valores y haga click en "Calcular" para ver el resultado.
+        </div>
+    </div>
+
+    <script>
+        function calculateResult() {
+            const principal = parseFloat(document.getElementById('principal').value);
+            const rate = parseFloat(document.getElementById('rate').value);
+            const time = parseFloat(document.getElementById('time').value);
+
+            if (isNaN(principal) || isNaN(rate) || isNaN(time)) {
+                document.getElementById('result').innerText = 'Please fill out all fields with valid numbers.';
+                return;
+            }
+
+            // Placeholder formula: replace with your own calculation logic
+            const result = principal + (principal * rate * time) / 100;
+
+            document.getElementById('result').innerText = `El ahorro es: $${result.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>
