@@ -39,7 +39,7 @@
             color: #007B5F;
         }
         .form-group input {
-            width: 100%;
+            width: 90%; /* Adjusted width for proportional alignment */
             padding: 8px;
             border: 1px solid #00BFA5;
             border-radius: 4px;
@@ -87,7 +87,7 @@
             <button type="button" class="btn" onclick="calculateResult()">Calculate</button>
         </form>
         <div class="result" id="result">
-            Enter values and click "Calculate" to see the result.
+            Ingerse los valores y haga click en "Calcular" para ver el resultado.
         </div>
     </div>
 
@@ -105,7 +105,7 @@
             // Placeholder formula: replace with your own calculation logic
             const result = principal + (principal * rate * time) / 100;
 
-            document.getElementById('result').innerText = `The calculated amount is: $${result.toFixed(2)}`;
+            document.getElementById('result').innerText = `El ahorro es: $${result.toFixed(2)}`;
         }
     </script>
 </body>
