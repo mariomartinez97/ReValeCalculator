@@ -29,6 +29,12 @@
             text-align: center;
             color: #007B5F;
         }
+        .calculator h2 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #007B5F;
+        }
         .form-group {
             margin-bottom: 15px;
         }
@@ -76,19 +82,36 @@
         }
     </script>
     <div class="calculator">
-        <h1>ReVale Calculadora de ahorro</h1>
+        <h1>ReVale</h1>
+        <h2>Calculadora de Ahorro</h2>
         <form id="calculatorForm">
             <div class="form-group">
-                <label for="principal">Salario Actual:</label>
-                <input type="number" id="principal" placeholder="Ingrese el salario actual" required>
+                <label for="sActual">Salario Actual:</label>
+                <input type="number" id="sActual" placeholder="Ingrese el salario actual" required>
             </div>
             <div class="form-group">
-                <label for="rate">Incremento:</label>
-                <input type="number" id="rate" placeholder="Ingrese el monto a incrementar" required>
+                <label for="incremento">Incremento:</label>
+                <input type="number" id="incremento" placeholder="Ingrese el monto a incrementar" required>
             </div>
             <div class="form-group">
-                <label for="time">Time (years):</label>
-                <input type="number" id="time" placeholder="Enter time period" required>
+                <label for="dTercero">Decimo Tercero:</label>
+                <input id="dTercero" placeholder="1/12 del salario" required>
+            </div>
+            <div class="form-group">
+                <label for="fReserva">Fondos de reserva:</label>
+                <input id="fReserva" placeholder="8.33%" required>
+            </div>
+            <div class="form-group">
+                <label for="aPatronal">Aporte patronal:</label>
+                <input id="aPatronal" placeholder="12.15%" required>
+            </div>
+            <div class="form-group"> 
+                <label for="vacaciones">Vacaciones:</label>
+                <input id="vacaciones" placeholder="8.33%" required>
+            </div>
+            <div class="form-group">
+                <label for="desahucio">Desahucio:</label>
+                <input id="desahucio" placeholder="4.17%" required>
             </div>
             <button type="button" class="btn" onclick="calculateResult()">Calculate</button>
         </form>
@@ -99,19 +122,33 @@
 
     <script>
         function calculateResult() {
-            const principal = parseFloat(document.getElementById('principal').value);
-            const rate = parseFloat(document.getElementById('rate').value);
-            const time = parseFloat(document.getElementById('time').value);
+            const salarioActual = parseFloat(document.getElementById('sActual').value);
+            const incremento = parseFloat(document.getElementById('incremento').value);
 
-            if (isNaN(principal) || isNaN(rate) || isNaN(time)) {
-                document.getElementById('result').innerText = 'Please fill out all fields with valid numbers.';
+            if (isNaN(salarioActual) || isNaN(incremento) ) {
+                document.getElementById('result').innerText = 'Por favor complete Salario Acutal e Incremento';
                 return;
             }
 
             // Placeholder formula: replace with your own calculation logic
-            const result = principal + (principal * rate * time) / 100;
+            //const result = principal + (principal * rate * time) / 100;
+            const dTerceroCalc = incremento / 12;
+            const fReservaCalc = incremento * 0.0833;
+            const aPatronalCalc = incremento * 0.1215;
+            const vacacionesCalc = incremento * 0.0833;
+            const desahucioCalc = incremento * 0.0417;
 
-            document.getElementById('result').innerText = `El ahorro es: $${result.toFixed(2)}`;
+            const ahorroFinal = dTerceroCalc + fReservaCalc + aPatronalCalc + vacacionesCalc + desahucioCalc;
+
+            document.getElementById('result').innerText = `Ahorro mensual por empleado: $${ahorroFinal.toFixed(2)}`;
+            document.getElementById('dTercero').value = `${dTerceroCalc.toFixed(2)}`;
+            document.getElementById('fReserva').value = `${fReservaCalc.toFixed(2)}`;
+            document.getElementById('aPatronal').value = `${aPatronalCalc.toFixed(2)}`;
+            document.getElementById('vacaciones').value = `${vacacionesCalc.toFixed(2)}`;
+            document.getElementById('desahucio').value = `${desahucioCalc.toFixed(2)}`;
+            //document.getElementById('result').innerText = `El ahorro es: $${result.toFixed(2)}`;
+            //sessionStorage.setItem('calculationResult', `The calculated amount is: $${result.toFixed(2)}`);
+            //window.location.href = 'result.html';
         }
     </script>
 </body>
