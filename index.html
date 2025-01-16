@@ -13,19 +13,21 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #f4f4f9;
+            background-color: #E6F9F4;
         }
         .calculator {
-            background: #fff;
+            background: #FFFFFF;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             padding: 20px;
             width: 300px;
+            border: 2px solid #00BFA5;
         }
         .calculator h1 {
             font-size: 1.5em;
             margin-bottom: 20px;
             text-align: center;
+            color: #007B5F;
         }
         .form-group {
             margin-bottom: 15px;
@@ -34,17 +36,18 @@
             display: block;
             margin-bottom: 5px;
             font-weight: bold;
+            color: #007B5F;
         }
         .form-group input {
             width: 100%;
             padding: 8px;
-            border: 1px solid #ccc;
+            border: 1px solid #00BFA5;
             border-radius: 4px;
         }
         .btn {
             width: 100%;
             padding: 10px;
-            background-color: #007BFF;
+            background-color: #00BFA5;
             color: white;
             border: none;
             border-radius: 4px;
@@ -52,28 +55,30 @@
             cursor: pointer;
         }
         .btn:hover {
-            background-color: #0056b3;
+            background-color: #007B5F;
         }
         .result {
             margin-top: 20px;
             padding: 10px;
-            background-color: #f0f8ff;
+            background-color: #F0FFFB;
             border-radius: 4px;
             text-align: center;
+            border: 1px solid #00BFA5;
+            color: #007B5F;
         }
     </style>
 </head>
 <body>
     <div class="calculator">
-        <h1>Financial Calculator</h1>
+        <h1>ReVale Calculadora de ahorro</h1>
         <form id="calculatorForm">
             <div class="form-group">
-                <label for="principal">Principal Amount:</label>
-                <input type="number" id="principal" placeholder="Enter principal amount" required>
+                <label for="principal">Salario Actual:</label>
+                <input type="number" id="principal" placeholder="Ingrese el salario actual" required>
             </div>
             <div class="form-group">
-                <label for="rate">Annual Interest Rate (%):</label>
-                <input type="number" id="rate" placeholder="Enter interest rate" required>
+                <label for="rate">Incremento:</label>
+                <input type="number" id="rate" placeholder="Ingrese el monto a incrementar" required>
             </div>
             <div class="form-group">
                 <label for="time">Time (years):</label>
