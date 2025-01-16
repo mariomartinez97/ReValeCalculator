@@ -85,6 +85,7 @@
             const username = document.getElementById('username').value;
 
             if (validUsernames.includes(username)) {
+                sessionStorage.setItem('authenticated', 'true'); // Store authentication status
                 window.location.href = 'calculator.html'; // Redirect to the calculator page
             } else {
                 document.getElementById('error').innerText = 'Invalid username. Please try again.';
